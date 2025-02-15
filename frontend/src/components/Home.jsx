@@ -67,7 +67,7 @@ const App = () => {
               <img src={cards[0].tokenImageUrl} alt={cards[0].name} className="card-image"/>
               <div className="card-text">
                 <h2>Created by {cards[0].creatorAddress}</h2>
-                <p>Funding Raised: {cards[0].fundingRaised} ETH</p>
+                <p>Funding Raised: {cards[0].fundingRaised} TRBTC</p>
                 <p>{cards[0].name} (ticker: {cards[0].symbol})</p>
                 <p>{cards[0].description}</p>
               </div>
@@ -98,7 +98,7 @@ const App = () => {
                   <img src={card.tokenImageUrl} alt={card.name} className="card-image"/>
                   <div className="card-text">
                     <h2>Created by {card.creatorAddress}</h2>
-                    <p>Funding Raised: {card.fundingRaised} ETH</p>
+                    <p>Funding Raised: {card.fundingRaised} TRBTC</p>
                     <p>{card.name} (ticker: {card.symbol})</p>
                     <p>{card.description}</p>
                   </div>
