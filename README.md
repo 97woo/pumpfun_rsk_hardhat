@@ -1,3 +1,5 @@
+<img src="https://rootstock.io/og.png" width="70%" alt="rsklogo">
+
 # pumpfun_rsk_hardhat DApp
 
 이 프로젝트는 Hardhat을 사용하여 로컬 RSK 테스트넷에 배포된 스마트 컨트랙트와 이를 위한 React 프론트엔드로 구성된 Pumpfun DApp입니다.
