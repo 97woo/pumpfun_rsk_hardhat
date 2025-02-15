@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css'; 
 import { useNavigate } from 'react-router-dom'; 
+import ConnectWallet from './ConnectWallet';
 const { ethers } = require('ethers');
 const {abi} = require("./abi")
 
@@ -53,9 +54,7 @@ const App = () => {
   return (
     <div className="app">
       <nav className="navbar">
-        <a href="#" className="nav-link">[moralis]</a>
-        <a href="#" className="nav-link">[docs]</a>
-        <button className="nav-button">[connect wallet]</button>
+        <ConnectWallet />
       </nav>
       <div className="card-container">
         <h3 className="start-new-coin" onClick={() => navigate('/token-create')}>[start a new coin]</h3>

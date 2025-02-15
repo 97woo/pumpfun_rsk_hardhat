@@ -3,6 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { abi } from './abi'; 
 import { ethers } from 'ethers';
+import ConnectWallet from './ConnectWallet';
 
 const TokenCreate = () => {
   const [name, setName] = useState('');
@@ -12,33 +13,47 @@ const TokenCreate = () => {
   const navigate = useNavigate();
 
   const handleCreate = async () => {
-    const provider = new ethers.BrowserProvider(window.ethereum);
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      console.log(signer)
-      const contract = new ethers.Contract(process.env.REACT_APP_CONTRACT_ADDRESS, abi, signer);
-
-      const transaction = await contract.createMemeToken(name, ticker, imageUrl, description,{
-        value: ethers.parseUnits("0.0001", 'ether'),
-      }); 
+      console.log("Signer address:", await signer.getAddress());
+  
+      const factoryAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
+      console.log("Factory Address from .env:", factoryAddress);
+  
+      const contractInstance = new ethers.Contract(factoryAddress, abi, signer);
+      console.log("Contract instance:", contractInstance);
+  
+      const transaction = await contractInstance.createMemeToken(
+        name,
+        ticker,
+        imageUrl,
+        description,
+        {
+          value: ethers.parseUnits("0.0001", "ether"),
+        }
+      );
       const receipt = await transaction.wait();
-
+  
       alert(`Transaction successful! Hash: ${receipt.hash}`);
-    console.log('Creating token:', { name, ticker, description, imageUrl });
-    navigate('/'); 
+      console.log("Creating token:", { name, ticker, description, imageUrl });
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
+  
 
   return (
     <div className="app">
       <nav className="navbar">
-        <a href="#" className="nav-link">[moralis]</a>
-        <a href="#" className="nav-link">[docs]</a>
-        <button className="nav-button">[connect wallet]</button>
+        <ConnectWallet />
       </nav>
       <div className="token-create-container">
       <h3 className="start-new-coin" onClick={() => navigate('/')}>[go back]</h3>
         <p className="info-text">MemeCoin creation fee: 0.0001 ETH</p>
         <p className="info-text">Max supply: 1 million tokens. Initial mint: 200k tokens.</p>
-        <p className="info-text">If funding target of 24 ETH is met, a liquidity pool will be created on Uniswap.</p>
+        <p className="info-text">If funding target of 24 TRBTC is met, a liquidity pool will be created on sushiswap.</p>
         <div className="input-container">
           <input
             type="text"

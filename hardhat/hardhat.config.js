@@ -14,8 +14,7 @@ module.exports = {
       forking: {
         url: process.env.RSK_TESTNET_RPC_URL
       },
-      chainId: 3131, // RSK 테스트넷의 체인 ID
-      // MetaMask 계정의 개인키 사용
+      chainId: 3131,
     }
   }
 };
