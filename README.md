@@ -1,6 +1,7 @@
 # pumpfun_rsk_hardhat DApp
 
 이 프로젝트는 Hardhat을 사용하여 로컬 RSK 테스트넷에 배포된 스마트 컨트랙트와 이를 위한 React 프론트엔드로 구성된 Pumpfun DApp입니다.
+Hardhat을 통해 로컬 RSK 테스트넷을 구동하고, 스마트 컨트랙트 개발부터 배포까지의 전체 과정을 실습해보는 방법을 안내합니다.
 
 ## 사전 준비사항
 
